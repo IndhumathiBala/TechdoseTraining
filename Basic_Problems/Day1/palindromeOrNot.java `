@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class Main
+{
+    // Method-2
+    static boolean isPalindrome2(String str)
+    {
+        int end=str.length()-1,start=0;
+        while(start<end)
+        {
+            if(str.charAt(start)!=str.charAt(end))
+            return false;
+            start++;end--;
+        }
+        return true;
+        
+    }
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	   // Method-1
+	    StringBuilder sb=new StringBuilder(sc.next());
+	    System.out.println(sb.toString().equals(sb.reverse().toString()));
+	    System.out.println(isPalindrome2(sb.toString()));
+	    
+	}
+}
