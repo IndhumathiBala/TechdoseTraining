@@ -1,0 +1,88 @@
+class Solution {
+    List<String>ans=new ArrayList<>();
+    private static Node root;
+    Solution()
+    {
+        root=new Node();
+    }
+    class Node
+    {
+        Node link[]=new Node[26];
+        boolean flag=false;
+        Node(){}
+        boolean containsKey(char ch)
+        {
+           return link[ch-'a']!=null; 
+        }
+        void put(char ch,Node node)
+        {
+           link[ch-'a']=node;
+        }
+        Node get(char ch)
+        {
+            return link[ch-'a'];
+        }
+    }
+    public void insert(String s)
+    {
+        Node node=root;
+        int n=s.length();
+        for(int i=0;i<n;i++)
+        {
+            char ch=s.charAt(i);
+            if(!node.containsKey(ch))
+            {
+                node.put(ch,new Node());
+            }
+                node=node.get(ch);
+        }
+        node.flag=true;
+    }
+    static boolean searchTrie(String s)
+    {
+        Node node=root;
+        for(int i=0;i<s.length();i++)
+        {
+            char ch=s.charAt(i);
+            if(!node.containsKey(ch))
+                return false;
+            node=node.get(ch); 
+            
+        }
+        return node.flag==true;
+    }
+    void solve(String s,String st,int pos)
+    {
+        if(pos==s.length())
+        {
+            ans.add(st);
+            return;
+        }
+       st+=" ";
+        for(int i=pos;i<s.length();i++)
+        {
+            if(searchTrie(s.substring(pos,i+1)))
+            {
+                solve(s,st+s.substring(pos,i+1),i+1);
+            }
+        }
+        
+    }
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        List<String>list=new ArrayList<>(); 
+        for(String word:wordDict)
+        {
+            insert(word);
+        }
+        for(int i=0;i<s.length();i++)
+        {
+            boolean flag=searchTrie(s.substring(0,i+1));
+            if(flag)
+            {
+                solve(s,s.substring(0,i+1),i+1);
+            }
+        }
+        return ans;
+        
+    }
+}
