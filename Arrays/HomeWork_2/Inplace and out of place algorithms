@@ -1,0 +1,18 @@
+INPLACE ALGORITHMS:
+----------------------
+1) Heap
+2) Bubble sort
+3) Insertion sort
+4) Selection sort
+5) Quick sort
+6) Cycle
+
+
+
+OUT OF PLACE ALGORITHMS:
+-------------------------
+1) Merge sort
+2) Tree sort
+3) Counting sort
+4) Bucket sort
+5) Radix sort 
