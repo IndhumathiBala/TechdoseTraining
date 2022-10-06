@@ -23,11 +23,12 @@ public class Main
 	    for(;i<n;i++)
 	    {
 	        res.add(arr[q.getFirst()]);
-	        while(!q.isEmpty() && arr[i]>arr[q.getFirst()])
+		    
+	        while(!q.isEmpty() && q.getFirst()<=i-k)
 	        {
 	            q.poll();
 	        }
-	        while(!q.isEmpty() && q.getFirst()<=i-k)
+	        while(!q.isEmpty() && arr[i]>arr[q.getFirst()])
 	        {
 	            q.poll();
 	        }
