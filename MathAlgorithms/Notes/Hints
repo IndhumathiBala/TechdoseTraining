@@ -1,0 +1,11 @@
+Catalan numbers:
+
+C(0)=1
+C(1)=1
+C(2)=C0C1 + C1C0
+.
+.
+.
+.
+.
+C(N)=CoCn-1 +C1Cn-2+.....+CiCn-i-1+.....+Cn-1Co
