@@ -66,19 +66,19 @@ public class Main
         }
     }
 	public static void main(String[] args) {
-	    Scanner input = new Scanner(System.in);
-        int x = input.nextInt(); 
+	    Scanner sc = new Scanner(System.in);
+	    String str=sc.nextLine();
+        String  []s=str.split(" ");
+        int x = Integer.parseInt(s[0]); 
         TreeNode root = new TreeNode(x);
-    
-        while(true) {
-            String str = input.next();
-            if(str.equals("stop"))
-            break;
-            if(str.equals("-"))
+        for(int i=1;i<s.length;i++)
+        {
+           if(s[i].equals("-"))
                 insert(root);
             else
-                insert(root, Integer.parseInt(str));
-        }  
+                insert(root, Integer.parseInt(s[i]));   
+        }
+         
         preorder(root);
 	}
 	static void preorder(TreeNode root)
