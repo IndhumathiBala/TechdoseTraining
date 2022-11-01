@@ -80,6 +80,10 @@ public class Main
         }
          
         preorder(root);
+        System.out.println();
+        inorder(root);
+        System.out.println();
+        postorder(root);
 	}
 	static void preorder(TreeNode root)
 	{
@@ -89,6 +93,29 @@ public class Main
 	        System.out.print(root.data+" ");
 	        preorder(root.LC);
 	        preorder(root.RC);
+	    }
+	}
+	static void inorder(TreeNode root)
+	{
+	    if(root!=null)
+	    {
+	        
+	        inorder(root.LC);
+	        
+	        if(root.data!=-1)
+	        System.out.print(root.data+" ");
+	        inorder(root.RC);
+	    }
+	}
+	static void postorder(TreeNode root)
+	{
+	    if(root!=null)
+	    {
+	        
+	        postorder(root.LC);
+	        postorder(root.RC);
+	        if(root.data!=-1)
+	        System.out.print(root.data+" ");
 	    }
 	}
 }
