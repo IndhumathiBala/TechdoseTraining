@@ -1,34 +1,47 @@
-import java.util.Scanner;
-import java.util.Arrays;
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         int n=nums.length;
-        if(n==1)return nums[0];
-        else if(n==2)
+        int low=0,high=n-1;
+        quickSelect(nums,low,high,k);
+        return nums[k-1];
+    }
+    void quickSelect(int[]nums,int low,int high,int k)
+    {
+        
+        if(low<high)
         {
-            int max=Math.max(nums[0],nums[1]);
-            int min=Math.min(nums[0],nums[1]);
-            if(k==1)return max;
-            return min;
-        }
-        int pivot=nums[n-1];
-        int i=0;
-        for(int j=0;j<n-1;j++)
-        {
-            if(nums[j]<pivot)
+            int p=partition(nums,low,high);
+            if(p+1==k)
+                return;
+            else if(p<k)
             {
-                i++;
-                swap(i,j,nums);
+               
+            quickSelect(nums,p+1,high,k);
+            }
+            else if(p>=k)
+            {
+            quickSelect(nums,low,p-1,k);
             }
             
         }
-        return nums[k];
-//         nums[n-k]-->kth smallest
     }
-    static void swap(int i,int j,int[]nums)
+    int partition(int []nums,int l,int h)
     {
-        int temp=nums[i];
+        int i=l-1;
+        for(int j=l;j<h;j++)
+        {
+           if(nums[j]>nums[h])
+           {
+              swap(nums,++i,j); 
+           }
+        }
+        swap(nums,i+1,h);
+        return i+1;
+    }
+    void swap(int []nums,int i,int j)
+    {
+        int t=nums[i];
         nums[i]=nums[j];
-        nums[j]=temp;
+        nums[j]=t;
     }
 }
