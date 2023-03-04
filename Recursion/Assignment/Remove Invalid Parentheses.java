@@ -1,6 +1,7 @@
 class Solution {
     List<String>res=new ArrayList<>();
     Map<String,Integer>map=new HashMap<>();
+//     can also use set
     public List<String> removeInvalidParentheses(String s) {
         solve(s,countInvalid(s));
         return res;
